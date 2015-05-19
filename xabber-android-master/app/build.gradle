@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 179
+        versionName '1.0.7'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        // problems with generated "applicationId" string resource
+        disable 'MissingTranslation'
+    }
+
+    productFlavors {
+
+        dev {
+            applicationId "com.xabber.androiddev"
+            resValue 'string', 'application_package', applicationId
+        }
+
+        beta {
+            applicationId "com.xabber.android.beta"
+            resValue 'string', 'application_package', applicationId
+        }
+
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:support-v13:22.0.0'
+    compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
+    compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'com.melnykov:floatingactionbutton:1.2.0'
+    compile 'dnsjava:dnsjava:2.1.7'
+    compile project('otr4j')
+}
